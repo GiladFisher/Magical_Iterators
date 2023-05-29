@@ -11,6 +11,7 @@
 #include "MagicalContainer.hpp"
 
     MagicalContainer::MagicalContainer(){
+        this->back = true;
     }
 
     MagicalContainer::~MagicalContainer(){
@@ -21,6 +22,18 @@
     }
 
     void MagicalContainer::addElement(int element){
+        this->original_order.push_back(element);
+        this->sorted.insert(element);
+        if (isPrime(element)){
+            this->prime.push_back(element);
+        }
+        if(this->back){
+            this->cross.push_back(element);
+        }
+        else{
+            this->cross.push_front(element);
+        }
+        this->back = !this->back;
     }
 
     void MagicalContainer::removeElement(int element){
@@ -31,7 +44,7 @@
     }
 
     bool MagicalContainer::contains(int element){
-        return false;
+        return this->sorted.contains(element);
     }
 
     void MagicalContainer::updatePrimeContainer(){
@@ -57,14 +70,17 @@
     }
 
     PrimeIterator::PrimeIterator(MagicalContainer &container){
+        this->iter = container.prime.begin();
+        this->prime_ptr = &container.prime;
     }
 
     PrimeIterator& PrimeIterator::operator++(){
+        this->iter++;
         return *this;
     }
 
     bool PrimeIterator::operator==(const PrimeIterator& other) const{
-        return false;
+        return this->iter == other.iter;
     }
 
     bool PrimeIterator::operator>(const PrimeIterator& other) const{

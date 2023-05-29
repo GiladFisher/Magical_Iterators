@@ -14,8 +14,10 @@
             std::set<int> sorted; // sorted by value 
             std::list<int> prime; // only prime numbers by order of insertion 
             std::list<int> cross; // cross order
+            bool back; // front push or back push for cross order list
             void updatePrimeContainer();
             bool isPrime(int num);
+
         public:
             MagicalContainer();
             ~MagicalContainer();
