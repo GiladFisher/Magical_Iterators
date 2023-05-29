@@ -6,14 +6,15 @@ using namespace std;
 #include "doctest.h"
 #include "MagicalContainer.hpp"
 
+using namespace ariel;
 TEST_CASE("Correct Initialization"){
     MagicalContainer container;
     CHECK(container.size() == 0);
-    PrimeIterator prime_iter(container);
+    MagicalContainer::PrimeIterator prime_iter(container);
     CHECK(prime_iter == prime_iter.begin());
-    AscendingIterator asc_iter(container);
+    MagicalContainer::AscendingIterator asc_iter(container);
     CHECK(asc_iter == asc_iter.begin());
-    SideCrossIterator cross_iter(container);
+    MagicalContainer::SideCrossIterator cross_iter(container);
     CHECK(cross_iter == cross_iter.begin());
 }
 
@@ -39,7 +40,7 @@ TEST_CASE("Prime Iterator"){
     container.addElement(5);
     container.addElement(6);
     container.addElement(7);
-    PrimeIterator prime_iter(container);
+    MagicalContainer::PrimeIterator prime_iter(container);
     CHECK(*prime_iter == 2);
     ++prime_iter;
     CHECK(*prime_iter == 3);
@@ -59,7 +60,7 @@ TEST_CASE("Ascending Iterator"){
     cont.addElement(3);
     cont.addElement(1);
     cont.addElement(2);
-    AscendingIterator asc_iter(cont);
+    MagicalContainer::AscendingIterator asc_iter(cont);
     CHECK(*asc_iter == 1);
     ++asc_iter;
     CHECK(asc_iter != asc_iter.begin());
@@ -81,7 +82,7 @@ TEST_CASE("Side Cross Iterator"){
     cont.addElement(3);
     cont.addElement(1);
     cont.addElement(2);
-    SideCrossIterator cross_iter(cont);
+    MagicalContainer::SideCrossIterator cross_iter(cont);
     CHECK(*cross_iter == 5);
     ++cross_iter;
     CHECK(cross_iter != cross_iter.begin());
@@ -103,8 +104,8 @@ TEST_CASE("Boolean operators -AscendingIterator"){
     cont.addElement(3);
     cont.addElement(1);
     cont.addElement(2);
-    AscendingIterator asc_iter(cont);
-    AscendingIterator asc_iter2(cont);
+    MagicalContainer::AscendingIterator asc_iter(cont);
+    MagicalContainer::AscendingIterator asc_iter2(cont);
     CHECK(asc_iter == asc_iter2);
     ++asc_iter;
     CHECK(asc_iter != asc_iter2);
@@ -124,8 +125,8 @@ TEST_CASE("Boolean operators -SideCrossIterator"){
     cont.addElement(3);
     cont.addElement(1);
     cont.addElement(2);
-    SideCrossIterator cross_iter(cont);
-    SideCrossIterator cross_iter2(cont);
+    MagicalContainer::SideCrossIterator cross_iter(cont);
+    MagicalContainer::SideCrossIterator cross_iter2(cont);
     CHECK(cross_iter == cross_iter2);
     ++cross_iter;
     CHECK(cross_iter != cross_iter2);
@@ -146,8 +147,8 @@ TEST_CASE("Boolean operators -PrimeIterator"){
     cont.addElement(1);
     cont.addElement(2);
     cont.addElement(7);
-    PrimeIterator prime_iter(cont);
-    PrimeIterator prime_iter2(cont);
+    MagicalContainer::PrimeIterator prime_iter(cont);
+    MagicalContainer::PrimeIterator prime_iter2(cont);
     CHECK(prime_iter == prime_iter2);
     ++prime_iter;
     CHECK(prime_iter != prime_iter2);

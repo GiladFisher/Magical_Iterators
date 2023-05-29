@@ -7,7 +7,7 @@
 #include <iterator>
 #include <algorithm>
 #include <set>
-
+namespace ariel{
     class MagicalContainer{
         private:
             std::list<int> original_order; // all the values by order of insertion
@@ -26,12 +26,12 @@
             int size() const; // return size of original container
             bool contains(int element);
 
-            friend class PrimeIterator;
-            friend class AscendingIterator;
-            friend class SideCrossIterator;
+            // friend class PrimeIterator;
+            // friend class AscendingIterator;
+            // friend class SideCrossIterator;
             
           
-    };
+    
 
     class PrimeIterator{
     private:
@@ -83,3 +83,5 @@
             SideCrossIterator end() const; // return size of cross container 
             SideCrossIterator& operator=(const SideCrossIterator& other); // copy
     };
+    };
+}
